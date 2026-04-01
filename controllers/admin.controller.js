@@ -198,7 +198,6 @@ exports.updateManager = async (req, res) => {
         });
     }
 }
-
 exports.getAllEmployees = async (req, res) => {
     try {
         const getAllEmployees = await Employee.find();
