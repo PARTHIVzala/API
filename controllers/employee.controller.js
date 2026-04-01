@@ -33,7 +33,6 @@ exports.employeeProfileUpdate = async (req, res) => {
 }
 exports.AllEmployee = async (req, res) => {
     try {
-
         const AllEmployee = await Employee.find()
         return res.json({
             message: "All Employee",
