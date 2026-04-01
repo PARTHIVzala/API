@@ -6,8 +6,6 @@ exports.profile = async (req, res) => {
         if (!employee) {
             return res.status(404).json({ message: "Manager not found in DB" });
         }
-        res.json(employee);
-
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -23,12 +21,12 @@ exports.employeeProfileUpdate = async (req, res) => {
         const employeeProfileUpdate = await Employee.findByIdAndUpdate(req.user.id, req.body,
             { returnDocument: 'after' })
         return res.json({
-            message: "Employee Profile Updated",
+            message: "Employee Profile Update",
             employeeProfileUpdate
         })
     } catch (error) {
         console.log(error);
-        res.status(500).json({
+        res.status(502).json({
             message: "Server Error"
         });
     }
@@ -43,7 +41,7 @@ exports.AllEmployee = async (req, res) => {
         })
     } catch (error) {
         console.log(error);
-        res.status(500).json({
+        res.status(502).json({
             message: "Server Error"
         });
     }
