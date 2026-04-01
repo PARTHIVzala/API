@@ -16,8 +16,8 @@ routes.delete("/deleteProfile/:id", verify("admin"), adminProfileDelete);
 routes.post("/managers", upload.single("image"), verify("admin"), addManager);
 routes.get("/managerss", verify("admin"), getAllManager);
 routes.get("/managers/:id", verify("admin"), getManager);
-routes.put("/updateManager/:id", verify("admin"), updateManager);
-routes.delete("/deleteManager/:id", verify("admin"), deleteManager);
+routes.put("/UpdateManager/:id", verify("admin"), updateManager);
+routes.delete("/DeleteManager/:id", verify("admin"), deleteManager);
 
 routes.get("/employees", getAllEmployees)
 module.exports = routes

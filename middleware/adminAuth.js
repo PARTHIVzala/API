@@ -6,7 +6,6 @@ exports.registerAdmin = async (req, res) => {
     try {
         const { email, password } = req.body
         const img = req.file ? req.file.filename : null;
-        console.log(email, password);
 
         const isAdminExists = await Admin.findOne({ email: req.body.email });
         if (isAdminExists) {
@@ -30,8 +29,7 @@ exports.registerAdmin = async (req, res) => {
                 lastname: AdminBase.lastname,
                 email: AdminBase.email,
                 role: AdminBase.role,
-                postion: AdminBase.position
-                
+                postion: AdminBase.position      
             }
         })
     } catch (error) {
@@ -64,7 +62,6 @@ exports.loginAdmin = async (req, res) => {
         }, "PARTHIV1710");
 
         res.cookie("cookie", token);
-
         res.json({
             message: "Admin Succesfully Login",
             admin: {
@@ -73,7 +70,6 @@ exports.loginAdmin = async (req, res) => {
                 password: admin.password
             }
         })
-
     } catch (error) {
         console.log(error);
     }

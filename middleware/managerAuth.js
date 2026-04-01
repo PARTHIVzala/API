@@ -6,7 +6,6 @@ exports.login = async (req, res) => {
     try {
         const { email, password } = req.body
         const manager = await Manager.findOne({ email });
-
         if (!manager) {
             return res.json({
                 message: "manager not found "
@@ -37,7 +36,6 @@ exports.login = async (req, res) => {
             },
             token
         })
-
     } catch (error) {
         console.log(error);
     }

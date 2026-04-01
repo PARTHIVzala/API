@@ -29,9 +29,6 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    address: {
-        type: String,
-    },
     department: {
         type: String,
         required: true,

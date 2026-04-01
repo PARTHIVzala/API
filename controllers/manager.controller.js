@@ -20,17 +20,12 @@ exports.managerProfile = async (req, res) => {
 };
 exports.managerProfileUpdate = async (req, res) => {
     try {
-
         const managerProfileUpdate = await Manager.findByIdAndUpdate(req.user.id, req.body,
             { returnDocument: 'after' })
-
-
         return res.json({
             message: "manager profile updated",
             managerProfileUpdate
         })
-
-
     } catch (error) {
         console.log(error);
 
@@ -43,7 +38,6 @@ exports.managerProfileDelete = async (req, res) => {
             message: "manager profile Deleted",
             deleteManager
         })
-
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -52,8 +46,6 @@ exports.managerProfileDelete = async (req, res) => {
     }
 }
 const sendMail = (email, firstname, password) => {
-
-
     const transporter = nodemailer.createTransport({
         host: "smit.gmail.com",
         port: 465,
@@ -71,7 +63,7 @@ const sendMail = (email, firstname, password) => {
         text: `
             Hello ${firstname},
 
-            Welcome! Your manager account has been created successfully.
+            Welcome to Your manager account has been created successfully.
 
             Login :
             Email: ${email}
@@ -81,9 +73,7 @@ const sendMail = (email, firstname, password) => {
 
             Login Link: http://localhost:8000/api/employee/login
 
-            Best Regards,
-
-            Manager Team
+            Best Manager Team
     `
     };
     transporter.sendMail(mailOptions);
@@ -114,7 +104,6 @@ exports.addEmployee = async (req, res) => {
             message: "Employee Add",
             EmployeeAdd,
         })
-
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -124,15 +113,12 @@ exports.addEmployee = async (req, res) => {
 }
 exports.deleteEmployee = async (req, res) => {
     try {
-
         const deleteEmployee = await Employee.findByIdAndDelete({_id : req.params.id, createdBy: req.user.id })
-
+        
         res.json({
             message: "Employee delete",
             deleteEmployee,
         })
-
-
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -142,14 +128,12 @@ exports.deleteEmployee = async (req, res) => {
 }
 exports.getAllEmployee = async (req, res) => {
     try {
-
         const getAllEmployee = await Employee.find({ createdby: req.user.id })
 
         res.json({
             message: "getAllEmployee",
             getAllEmployee,
         })
-
     } catch (error) {
         console.log(error);
         res.status(500).json({
@@ -168,7 +152,6 @@ exports.updateEmployee = async (req, res) => {
             message: "update empoloyee",
             updateEmployee,
         })
-
     } catch (error) {
         console.log(error);
         res.status(500).json({
